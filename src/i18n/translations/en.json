@@ -1,0 +1,55 @@
+{
+    "samajname" : "Shree Halari Visa Samaj",
+    "selectsamaj": "Select Your Samajh",
+    "samaj1":"Halari Visa Samajh",
+    "samaj2":"Patel Samajh",
+    "samaj3":"Gujarati Samajh",
+    "continue":"continue",
+    "changeLanguage":"Change Language",
+    "MemberStatus" : "Member Status",
+    "existingOrNewMember" : "Are you an existing Member or a new member? ",
+    "Already a Member" : "Already a member",
+    "New Member" : "New Member",
+    "submit" : "Submit",
+    "Login" : "Login",
+    "Register" : "Register",
+    "Forgot Password" : "Forgot Password ?",
+    "privacy policy" : "By signing in or registering, you agree to our",
+    "Name": "Name",
+    "Gender": "Gender",
+    "Marital Status": "Marital Status",
+    "Date of Birth": "Date of Birth",
+    "Phone Number": "Phone Number",
+    "Personal Details": "Personal Details",
+    "Physical Attributes": "Physical Attributes",
+    "Height": "Height",
+    "Weight": "Weight",
+    "Blood Group": "Blood Group",
+    "Father Name": "Father's Name",
+    "Address": "Address",
+    "Emergency Contact": "Emergency Contact",
+
+    "categories": {
+    "Home": "Home",
+    "New Born": "New Born",
+    "Anniversary": "Anniversary",
+    "General": "General",
+    "Death": "Death",
+    "Marriage": "Marriage"
+},
+
+"tabs" : {
+  "Home" : "Home",
+  "Explore" : "Explore",
+  "Marriage" : "Marriage",
+  "Profile" : "Profile"
+},
+
+"samajDropdown": {
+  "selectSamaj": "Select Your Samaj",
+  "halari": "Halari Visa Samaj",
+  "patel": "Patel Samaj",
+  "gujarati": "Gujarati Samaj"
+}
+
+}

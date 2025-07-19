@@ -1,0 +1,55 @@
+{
+    "samajname": "શ્રી હળારી વિસા સમાજ",
+    "selectsamaj": "તમારો સમાજ પસંદ કરો",
+    "samaj1": "હળારી વિસા સમાજ",
+    "samaj2": "પટેલ સમાજ",
+    "samaj3": "ગુજરાતી સમાજ",
+    "continue": "ચાલુ રાખો",
+    "changeLanguage": "ભાષા બદલો",
+    "MemberStatus": "સભ્ય સ્થિતિ",
+    "existingOrNewMember": "તમે પહેલાથી સભ્ય છો કે નવા સભ્ય છો?",
+    "Already a Member": "પહેલેથી જ સભ્ય છે",
+    "New Member": "નવા સભ્ય",
+    "submit" : "ચાલુ રાખો",
+    "Login" : "લોગિન",
+    "Register" : "રજિસ્ટર",
+    "Forgot Password" : "પાસવર્ડ ભૂલી ગયા છો ?",
+    "privacy policy" : "સાઇન ઇન કરવાથી અથવા રજિસ્ટર કરવાથી, તમે અમારી સાથે સંમતિ આપો છો",
+    "Name": "નામ",
+    "Gender": "લિંગ",
+    "Marital Status": "વૈવાહિક સ્થિતિ",
+    "Date of Birth": "જન્મ તારીખ",
+    "Phone Number": "ફોન નંબર",
+    "Personal Details": "વ્યક્તિગત વિગતો",
+    "Physical Attributes": "શારીરિક લક્ષણો",
+    "Height": "ઊંચાઈ",
+    "Weight": "વજન",
+    "Blood Group": "રક્ત ગ્રુપ",
+    "Father Name": "પિતાનું નામ",
+    "Address": "સરનામું",
+    "Emergency Contact": "આપત્તિ સંપર્ક",
+
+    "categories": {
+        "Home": "ઘર",
+        "New Born": "નવું જન્મેલું",
+        "Anniversary": "વર્ષગાંઠ",
+        "General": "સામાન્ય",
+    "Death": "મૃત્યુ",
+    "Marriage": "લગ્ન"
+        
+    },
+
+        "tabs": {
+          "Home": "ઘર",
+          "Explore": "શોધખોળ",
+          "Marriage": "લગ્ન",
+          "Profile": "પ્રોફાઇલ"
+        },
+
+        "samajDropdown": {
+            "selectSamaj": "તમારો સમાજ પસંદ કરો",
+            "halari": "હળારી વિસા સમાજ",
+            "patel": "પટેલ સમાજ",
+            "gujarati": "ગુજરાતી સમાજ"
+          }
+}

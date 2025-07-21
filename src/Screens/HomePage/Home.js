@@ -114,9 +114,10 @@ const Home = () => {
     
       {/* <ScrollView contentContainerStyle={styles.scrollView}> // virtualized erorr showing so commenting these part  */}
       {/* <Banner/> */}
-      <View style={styles.scrollView}>
-        <PostCard style={styles.postCardContainer} activeCategory={activeCategory} />
-     </View>
+   <View style={{ flex: 1 }}>
+  <PostCard activeCategory={activeCategory} />
+</View>
+
       {/* </ScrollView> */}
    
     </View>

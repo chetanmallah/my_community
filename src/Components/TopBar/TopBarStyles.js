@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: '#212529',
     paddingHorizontal: wp(isSmallDevice ? '4%' : '4%'),
-    paddingTop : '3%',
+    paddingTop : '10%',
     paddingBottom: hp(isSmallDevice ? '1.5%' : '2%'),
     elevation: 8,
     shadowColor: '#000',
@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: hp(isSmallDevice ? '1%' : '1.5%'),
+    marginBottom: hp(isSmallDevice ? '2%' : '1.5%'),
   },
   profileContainer: {
     width: wp(isSmallDevice ? '13%' : '12%'),

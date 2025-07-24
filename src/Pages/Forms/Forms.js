@@ -458,7 +458,7 @@
 //       const formData = { ...step1Data, ...step2Data, ...step3Data };
   
 //       // Send data to the /users endpoint in db.json
-//       // const response = await fetch('http://192.168.0.108:3000/users', {
+//       // const response = await fetch('http://192.168.1.116:3000/users', {
 //       const response = await fetch('https://localhost:8080/api/auth/register', {
 
 //         method: 'POST',
@@ -657,7 +657,7 @@ const Forms = () => {
   const [success, setSuccess] = useState(false);
   const [validated, setValidated] = useState(true);
 
-  const API_BASE = 'http://192.168.0.108:8080/api/auth';
+  const API_BASE = 'http://192.168.1.116:8080/api/auth';
   
 
 

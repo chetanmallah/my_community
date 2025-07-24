@@ -76,7 +76,7 @@ import styles from './FirstPageStyles';
 import { useTranslation } from 'react-i18next';
 import { Ionicons } from 'react-native-vector-icons';  // Icons
 
-const API_URL = "http://192.168.0.108:8080/api/communities/names"; // ✅ Use local IP, not localhost
+const API_URL = "http://192.168.1.116:8080/api/communities/names"; // ✅ Use local IP, not localhost
 
 const FirstPage = () => {
   const [selectedSamaj, setSelectedSamaj] = useState('');

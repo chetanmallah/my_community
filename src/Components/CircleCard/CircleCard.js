@@ -9,7 +9,7 @@
 //   useEffect(() => {
 //     const fetchCategories = async () => {
 //       try {
-//         const response = await fetch('http://192.168.0.108:3000/categories');
+//         const response = await fetch('http://192.168.1.116:3000/categories');
 //         const data = await response.json();
 //         setCategories(data); // Set fetched categories data
 //       } catch (error) {
@@ -67,7 +67,7 @@
 //   useEffect(() => {
 //     const fetchCategories = async () => {
 //       try {
-//         const response = await fetch('http://192.168.0.108:3000/categories');
+//         const response = await fetch('http://192.168.1.116:3000/categories');
 //         const data = await response.json();
 //         setCategories(data); // Set fetched categories data
 //       } catch (error) {
@@ -195,7 +195,7 @@ const CircleCard = ({ activeCategory, setActiveCategory }) => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const response = await fetch('http://192.168.0.108:8080/api/fed-categories/feedcategories');
+        const response = await fetch('http://192.168.1.116:8080/api/fed-categories/feedcategories');
         const data = await response.json();
 
         if (Array.isArray(data.categories)) {

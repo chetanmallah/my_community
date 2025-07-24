@@ -329,7 +329,7 @@
 //         return;
 //       }
 
-//       const res = await fetch(`http://192.168.0.108:8080/api/users/${userId}`, {
+//       const res = await fetch(`http://192.168.1.116:8080/api/users/${userId}`, {
 //         headers: {
 //           Authorization: `Bearer ${token}`,
 //           Accept: "application/json",
@@ -600,7 +600,7 @@ const UserProfile = () => {
       }
       
 
-      const res = await fetch(`http://192.168.0.108:8080/api/users/${userId}`, {
+      const res = await fetch(`http://192.168.1.116:8080/api/users/${userId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
           Accept: "application/json",

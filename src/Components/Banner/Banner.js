@@ -14,7 +14,7 @@ const Banner = () => {
   useEffect(() => {
     const fetchBanners = async () => {
       try {
-        const response = await fetch('http://192.168.0.108:3000/banner');
+        const response = await fetch('http://192.168.1.116:3000/banner');
         const data = await response.json();
         if (Array.isArray(data)) {
           setBanners(data);
@@ -198,7 +198,7 @@ export default Banner;
 //   useEffect(() => {
 //     const fetchBanners = async () => {
 //       try {
-//         const response = await fetch('http://192.168.0.108:3000/banner');
+//         const response = await fetch('http://192.168.1.116:3000/banner');
 //         const data = await response.json();
 //         if (Array.isArray(data)) {
 //           setBanners(data);

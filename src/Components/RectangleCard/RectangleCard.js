@@ -18,7 +18,7 @@
 //   useEffect(() => {
 //     const fetchCategories = async () => {
 //       try {
-//         const response = await fetch('http://192.168.0.108:8080/api/fed-categories/feedcategories');
+//         const response = await fetch('http://192.168.1.116:8080/api/fed-categories/feedcategories');
 //         const data = await response.json();
 //         if (Array.isArray(data.categories)) {
 //           setCategories(data.categories);
@@ -126,7 +126,7 @@ const RectangleCard = ({ activeCategory, setActiveCategory }) => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const response = await fetch('http://192.168.0.108:8080/api/fed-categories/feedcategories');
+        const response = await fetch('http://192.168.1.116:8080/api/fed-categories/feedcategories');
         const data = await response.json();
         if (Array.isArray(data.categories)) {
           setCategories(data.categories);

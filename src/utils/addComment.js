@@ -1,7 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
 
-const BASE_URL = 'http://192.168.0.108:8080/api/users';
+const BASE_URL = 'http://192.168.1.116:8080/api/users';
 
 export const addComment = async (postId, userId, text) => {
   try {

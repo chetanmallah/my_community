@@ -50,7 +50,7 @@
 //       const token = await AsyncStorage.getItem("token");
 //       if (!token) throw new Error("Please login first");
 
-//       const response = await fetch(`http://192.168.0.108:8080/api/users/filter?${new URLSearchParams({
+//       const response = await fetch(`http://192.168.1.116:8080/api/users/filter?${new URLSearchParams({
 //         gender: gender.charAt(0).toUpperCase() + gender.slice(1),
 //         maritalStatus: status.charAt(0).toUpperCase() + status.slice(1),
 //         ageFrom,
@@ -341,7 +341,7 @@ const Marriage = () => {
       if (!token) throw new Error("Please login first");
 
       const response = await fetch(
-        `http://192.168.0.108:8080/api/users/filter?${new URLSearchParams({
+        `http://192.168.1.116:8080/api/users/filter?${new URLSearchParams({
           gender: gender.charAt(0).toUpperCase() + gender.slice(1),
           maritalStatus: status.charAt(0).toUpperCase() + status.slice(1),
           ageFrom,

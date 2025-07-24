@@ -7,7 +7,7 @@ export const deleteComment = async (commentId) => {
   if (!token) throw new Error('No token found');
 
   const response = await axios.delete(
-    `http://192.168.0.108:8080/api/users/comment/${commentId}`,
+    `http://192.168.1.116:8080/api/users/comment/${commentId}`,
     {
       headers: {
         Authorization: `Bearer ${token}`,

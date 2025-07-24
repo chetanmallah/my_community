@@ -61,7 +61,7 @@ const handleLogout = () => {
     const fetchProfile = async () => {
       try {
         const token = await AsyncStorage.getItem('token');
-        const response = await fetch('http://192.168.0.108:8080/api/auth/me', {
+        const response = await fetch('http://192.168.1.116:8080/api/auth/me', {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -97,7 +97,7 @@ const handleLogout = () => {
       setSaving(true);
       const token = await AsyncStorage.getItem('token');
       
-      const response = await fetch('http://192.168.0.108:8080/api/users/profile', {
+      const response = await fetch('http://192.168.1.116:8080/api/users/profile', {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -599,7 +599,7 @@ export default ProfilePage;
 //     const fetchProfile = async () => {
 //       try {
 //         const token = await AsyncStorage.getItem('token');
-//         const response = await fetch('http://192.168.0.108:8080/api/auth/me', {
+//         const response = await fetch('http://192.168.1.116:8080/api/auth/me', {
 //           headers: {
 //             Authorization: `Bearer ${token}`,
 //           },
@@ -635,7 +635,7 @@ export default ProfilePage;
 //       setSaving(true);
 //       const token = await AsyncStorage.getItem('token');
       
-//       const response = await fetch('http://192.168.0.108:8080/api/users/profile', {
+//       const response = await fetch('http://192.168.1.116:8080/api/users/profile', {
 //         method: 'PUT',
 //         headers: {
 //           'Content-Type': 'application/json',

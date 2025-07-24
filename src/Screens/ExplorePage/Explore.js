@@ -160,7 +160,7 @@ const Explore = () => {
 
   const fetchCategories = async () => {
     try {
-      const res = await fetch('http://192.168.0.108:8080/api/fed-categories/feedcategories');
+      const res = await fetch('http://192.168.1.116:8080/api/fed-categories/feedcategories');
       const json = await res.json();
       const formatted = json.categories.map((cat) => ({
         label: cat,
@@ -220,7 +220,7 @@ const Explore = () => {
     formData.append('tags', tags);
 
     try {
-      const response = await fetch('http://192.168.0.108:8080/api/posts', {
+      const response = await fetch('http://192.168.1.116:8080/api/posts', {
         method: 'POST',
         headers: {
           'Content-Type': 'multipart/form-data',

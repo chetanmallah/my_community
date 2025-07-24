@@ -33,7 +33,7 @@
 
 //   const fetchComments = async () => {
 //     try {
-//       const response = await fetch(`http://192.168.0.108:8080/api/users/comment/${postId}`);
+//       const response = await fetch(`http://192.168.1.116:8080/api/users/comment/${postId}`);
 //       const text = await response.text();
 
 //       if (text.trim()) {
@@ -54,7 +54,7 @@
 //     try {
 //       const token = await AsyncStorage.getItem('token');
 
-//       const response = await fetch(`http://192.168.0.108:8080/api/users/comment/${postId}`, {
+//       const response = await fetch(`http://192.168.1.116:8080/api/users/comment/${postId}`, {
 //         method: 'POST',
 //         headers: {
 //           'Content-Type': 'application/json',
@@ -90,7 +90,7 @@
 //           onPress: async () => {
 //             try {
 //               const token = await AsyncStorage.getItem('token');
-//               await fetch(`http://192.168.0.108:8080/api/users/comment/${commentId}`, {
+//               await fetch(`http://192.168.1.116:8080/api/users/comment/${commentId}`, {
 //                 method: 'DELETE',
 //                 headers: {
 //                   Authorization: `Bearer ${token}`,

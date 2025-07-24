@@ -16,7 +16,7 @@
 // import { useTranslation } from "react-i18next";
 // import { useNavigation } from "@react-navigation/native";
 
-// const API_BASE = "http://192.168.0.108:8080/api/auth";
+// const API_BASE = "http://192.168.1.116:8080/api/auth";
 
 // const Auth = () => {
 //   const { memberStatus } = useMemberStatus();
@@ -337,7 +337,7 @@ import { useAuth } from "../../context/AuthContext";
 import { useTranslation } from "react-i18next";
 import { useNavigation } from "@react-navigation/native";
 
-const API_BASE = "http://192.168.0.108:8080/api/auth";
+const API_BASE = "http://192.168.1.116:8080/api/auth";
 
 const Auth = () => {
   const { memberStatus } = useMemberStatus();

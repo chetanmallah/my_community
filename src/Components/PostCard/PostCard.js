@@ -833,6 +833,7 @@ const PostCard = ({ activeCategory }) => {
   useEffect(() => {
     const fetchCurrentUserId = async () => {
       const id = await AsyncStorage.getItem("userId");
+      console.log("👤 Current logged-in user ID:", id);
       setCurrentUserId(Number(id));
     };
     fetchCurrentUserId();
@@ -840,6 +841,8 @@ const PostCard = ({ activeCategory }) => {
 
   const [commentModalVisible, setCommentModalVisible] = useState(false);
   const [selectedPostId, setSelectedPostId] = useState(null);
+  const [selectedPost, setSelectedPost] = useState(null); // ✅ Add this
+
   const [comments, setComments] = useState([]);
   const [loadingComments, setLoadingComments] = useState(false);
   const [newComment, setNewComment] = useState("");
@@ -904,20 +907,30 @@ const PostCard = ({ activeCategory }) => {
   }, [commentModalVisible]);
 
   const flattenReplies = (replies) => {
-  const flat = [];
+    const flat = [];
 
-  const recurse = (arr) => {
-    for (const reply of arr) {
-      flat.push(reply);
-      if (reply.replies && reply.replies.length > 0) {
-        recurse(reply.replies);
+    const recurse = (arr) => {
+      for (const reply of arr) {
+        flat.push(reply);
+        if (reply.replies && reply.replies.length > 0) {
+          recurse(reply.replies);
+        }
       }
-    }
+    };
+
+    recurse(replies);
+    return flat;
   };
 
-  recurse(replies);
-  return flat;
-};
+  const isPostOwner = () => {
+    if (!selectedPost || !currentUserId) return false;
+
+    console.log("🔍 Post owner check");
+    console.log("📮 uploaderId:", selectedPost.uploaderId);
+    console.log("👤 currentUserId:", currentUserId);
+
+    return selectedPost.uploaderId === currentUserId;
+  };
 
   const renderReplies = (replies) => {
     return replies.map((reply, index) => (
@@ -956,37 +969,28 @@ const PostCard = ({ activeCategory }) => {
                 <Text style={styles.replyBtn}>Reply</Text>
               </TouchableOpacity>
 
-
-
-
-
-
-
-
-{(reply.replierId === currentUserId ||
-  posts.find((p) => p.id === selectedPostId)?.uploaderId === currentUserId) && (
-  <TouchableOpacity
-    onPress={() =>
-      Alert.alert(
-        "Delete Reply",
-        "Are you sure you want to delete this reply?",
-        [
-          { text: "Cancel", style: "cancel" },
-          {
-            text: "Delete",
-            style: "destructive",
-            onPress: () => handleDeleteCommentOrReply(reply.replyId),
-          },
-        ]
-      )
-    }
-  >
-    <Text style={{ color: "red", marginTop: 5 }}>Delete</Text>
-  </TouchableOpacity>
-)}
-
-
-            
+              {(reply.replierId === currentUserId ||
+                isPostOwner(selectedPostId)) && (
+                <TouchableOpacity
+                  onPress={() =>
+                    Alert.alert(
+                      "Delete Reply",
+                      "Are you sure you want to delete this reply?",
+                      [
+                        { text: "Cancel", style: "cancel" },
+                        {
+                          text: "Delete",
+                          style: "destructive",
+                          onPress: () =>
+                            handleDeleteCommentOrReply(reply.replyId),
+                        },
+                      ]
+                    )
+                  }
+                >
+                  <Text style={{ color: "red", marginTop: 5 }}>Delete</Text>
+                </TouchableOpacity>
+              )}
             </View>
           </View>
         </View>
@@ -1022,7 +1026,6 @@ const PostCard = ({ activeCategory }) => {
     }
   };
 
-  
   const handleAddComment = async () => {
     if (!newComment.trim()) {
       console.log("🚫 Empty comment, skipping post.");
@@ -1074,7 +1077,6 @@ const PostCard = ({ activeCategory }) => {
   };
 
   // render reply
-
   const fetchComments = async (postId) => {
     try {
       setLoadingComments(true);
@@ -1096,6 +1098,7 @@ const PostCard = ({ activeCategory }) => {
       console.log("🧾 Response shape:", JSON.stringify(data, null, 2));
 
       setComments(data.comments || []);
+      setSelectedPost(data); // ✅ Now you’re storing the full post info including uploaderId
     } catch (error) {
       console.error("❌ Error fetching comments:", error);
     } finally {
@@ -1325,10 +1328,9 @@ const PostCard = ({ activeCategory }) => {
                             );
                             const isCommentOwner =
                               comment.commenterId === currentUserId;
-                            const isPostOwner =
-                              post && post.uploaderId === currentUserId;
+                            const isUploader = isPostOwner(selectedPostId);
 
-                            if (isCommentOwner || isPostOwner) {
+                            if (isCommentOwner || isUploader) {
                               return (
                                 <TouchableOpacity
                                   onPress={() =>
@@ -1363,8 +1365,10 @@ const PostCard = ({ activeCategory }) => {
                         {comment.replies && comment.replies.length > 0 && (
                           <>
                             {visibleReplies[comment.commentId]
-  ? renderReplies(flattenReplies(comment.replies))
-  : renderReplies([flattenReplies(comment.replies)[0]])}
+                              ? renderReplies(flattenReplies(comment.replies))
+                              : renderReplies([
+                                  flattenReplies(comment.replies)[0],
+                                ])}
 
                             {comment.replies.length > 1 && (
                               <TouchableOpacity

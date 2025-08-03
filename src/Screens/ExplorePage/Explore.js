@@ -144,11 +144,18 @@ import {
   ScrollView,
   StyleSheet,
   ActivityIndicator,
+  Platform,
+  StatusBar,
 } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import * as ImageManipulator from 'expo-image-manipulator';
 import Icon from 'react-native-vector-icons/Feather';
 import RNPickerSelect from 'react-native-picker-select';
+import { 
+  widthPercentageToDP as wp, 
+  heightPercentageToDP as hp 
+} from 'react-native-responsive-screen';
+import { fontSize, spacing, borderRadius, isSmallDevice } from '../../utils/responsiveHelper';
 
 const Explore = () => {
   const [selectedImages, setSelectedImages] = useState([]);
@@ -306,89 +313,93 @@ const Explore = () => {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#fff',
-    paddingVertical: 20,
-    paddingHorizontal: 20,
+    paddingVertical: hp('2.5%'),
+    paddingHorizontal: spacing.lg,
     flexGrow: 1,
     justifyContent: 'center',
+    paddingTop: Platform.OS === 'ios' ? hp('8%') : StatusBar.currentHeight + hp('4%'),
   },
   innerContainer: {
-    maxWidth: 500,
+    maxWidth: wp('90%'),
     width: '100%',
     alignSelf: 'center',
   },
   title: {
-    fontSize: 30,
+    fontSize: fontSize(isSmallDevice ? 26 : 30),
     fontWeight: 'bold',
     color: '#000',
-    marginBottom: 20,
+    marginBottom: hp('2.5%'),
     textAlign: 'center',
   },
   imagePicker: {
     backgroundColor: '#f1f1f1',
-    borderRadius: 10,
-    padding: 14,
-    marginBottom: 24,
+    borderRadius: borderRadius.md,
+    padding: spacing.md,
+    marginBottom: hp('3%'),
     alignItems: 'center',
   },
   selectedImage: {
-    width: 100,
-    height: 100,
-    borderRadius: 10,
-    marginRight: 10,
+    width: wp('25%'),
+    height: wp('25%'),
+    borderRadius: borderRadius.md,
+    marginRight: spacing.sm,
   },
   pickImageButton: {
     flexDirection: 'row',
-    marginTop: 12,
+    marginTop: hp('1.5%'),
     backgroundColor: '#000',
-    paddingVertical: 10,
-    paddingHorizontal: 16,
-    borderRadius: 6,
+    paddingVertical: hp('1.2%'),
+    paddingHorizontal: wp('4%'),
+    borderRadius: borderRadius.sm,
     alignItems: 'center',
   },
   pickImageText: {
     color: '#fff',
-    marginLeft: 8,
+    marginLeft: spacing.sm,
     fontWeight: '600',
+    fontSize: fontSize(14),
   },
   addImageText: {
     color: '#666',
+    fontSize: fontSize(16),
   },
   input: {
     backgroundColor: '#f9f9f9',
     color: '#000',
-    padding: 14,
-    borderRadius: 8,
-    marginBottom: 20,
+    padding: spacing.md,
+    borderRadius: borderRadius.md,
+    marginBottom: hp('2.5%'),
     borderWidth: 1,
     borderColor: '#ddd',
+    fontSize: fontSize(16),
   },
   dropdownLabel: {
     color: '#333',
-    marginBottom: 6,
-    fontSize: 14,
-    marginTop: 6,
+    marginBottom: hp('0.7%'),
+    fontSize: fontSize(14),
+    marginTop: hp('0.7%'),
   },
   dropdown: {
     backgroundColor: '#f9f9f9',
     color: '#000',
-    paddingVertical: 12,
-    paddingHorizontal: 12,
-    borderRadius: 8,
-    fontSize: 16,
+    paddingVertical: hp('1.5%'),
+    paddingHorizontal: spacing.md,
+    borderRadius: borderRadius.md,
+    fontSize: fontSize(16),
     borderWidth: 1,
     borderColor: '#ddd',
-    marginBottom: 24,
+    marginBottom: hp('3%'),
   },
   postButton: {
     backgroundColor: '#000',
-    paddingVertical: 16,
-    borderRadius: 8,
+    paddingVertical: hp('2%'),
+    borderRadius: borderRadius.md,
     alignItems: 'center',
-    marginTop: 10,
+    marginTop: hp('1.2%'),
   },
   postButtonText: {
     color: '#fff',
-    fontSize: 16,
+    fontSize: fontSize(16),
     fontWeight: 'bold',
   },
 });

@@ -44,7 +44,12 @@
 // upar wala bhi ok ok hi but neeche wala more styling k liye kar rahe 
 
 
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Platform, StatusBar } from 'react-native';
+import { 
+  widthPercentageToDP as wp, 
+  heightPercentageToDP as hp 
+} from 'react-native-responsive-screen';
+import { fontSize, spacing, borderRadius } from '../../utils/responsiveHelper';
 
 const styles = StyleSheet.create({
   container: {
@@ -52,76 +57,73 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#f7f9fc',
-    padding: 20,
+    padding: spacing.lg,
+    paddingTop: Platform.OS === 'ios' ? hp('10%') : StatusBar.currentHeight + hp('5%'),
   },
   title: {
-    fontSize: 32,  // Larger size for the community name
+    fontSize: fontSize(32),
     fontWeight: '900',
     color: 'Black',
-    marginBottom: 40,
+    marginBottom: hp('5%'),
     textAlign: 'center',
-    letterSpacing: 1,  // Adding some letter spacing for a cleaner look
+    letterSpacing: 1,
   },
   pickerContainer: {
-    height:'8%',
-    width: '80%',
+    height: hp('8%'),
+    width: wp('80%'),
     backgroundColor: '#fff',
-    borderRadius: 12,
+    borderRadius: borderRadius.lg,
     borderColor: '#212529',
     borderWidth: 2,
-    marginBottom: 30,
-    paddingHorizontal: 15,
-    paddingVertical: 10,
+    marginBottom: hp('4%'),
+    paddingHorizontal: spacing.md,
+    paddingVertical: hp('1.2%'),
     flexDirection: 'row',
     alignItems: 'center',
-    elevation: 3,  // Subtle shadow for the picker container
+    elevation: 3,
   },
   icon: {
-    marginRight: 10,
+    marginRight: spacing.sm,
   },
   picker: {
     flex: 1,
-    height: 60,  // Ensuring picker items are well aligned and visible
+    height: hp('7%'),
     color: '#212529',
-    fontSize: 16,
-    borderRadius: 10,
-    paddingVertical: 10,  // Padding to ensure text is centered properly
+    fontSize: fontSize(16),
+    borderRadius: borderRadius.md,
+    paddingVertical: hp('1.2%'),
   },
   button: {
-    // backgroundColor: '#3498db',
     backgroundColor: '#212529',
-
-    paddingVertical: 16,
-    paddingHorizontal: 40,
-    borderRadius: 12,
-    marginBottom: 20,
+    paddingVertical: hp('2%'),
+    paddingHorizontal: wp('10%'),
+    borderRadius: borderRadius.lg,
+    marginBottom: hp('2.5%'),
     elevation: 5,
-    shadowColor: '#2980b9',  // Slight shadow to make the button pop
-    shadowOffset: { width: 0, height: 10 },
+    shadowColor: '#2980b9',
+    shadowOffset: { width: 0, height: hp('1.2%') },
     shadowOpacity: 0.3,
-    shadowRadius: 15,
+    shadowRadius: wp('4%'),
   },
   buttonText: {
     color: '#fff',
     fontWeight: '600',
-    fontSize: 18,
+    fontSize: fontSize(18),
   },
   changeLanguageButton: {
     backgroundColor: '#ecf0f1',
-    // backgroundColor: '#5c677d',
-
-    paddingVertical: 10,
-    paddingHorizontal: 30,
-    borderRadius: 8,
-    marginTop: 20,
+    paddingVertical: hp('1.2%'),
+    paddingHorizontal: wp('8%'),
+    borderRadius: borderRadius.md,
+    marginTop: hp('2.5%'),
     elevation: 3,
-    shadowColor: '#bdc3c7',  // Subtle shadow for language button
-    shadowOffset: { width: 0, height: 5 },
+    shadowColor: '#bdc3c7',
+    shadowOffset: { width: 0, height: hp('0.6%') },
     shadowOpacity: 0.2,
-    shadowRadius: 8,
+    shadowRadius: wp('2%'),
   },
   changeLanguageText: {
-    fontSize: 16,
+    fontSize: fontSize(16),
     color: '#212529',
     fontWeight: '600',
     textAlign: 'center',

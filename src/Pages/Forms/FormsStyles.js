@@ -1,49 +1,55 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Platform, StatusBar } from 'react-native';
+import { 
+  widthPercentageToDP as wp, 
+  heightPercentageToDP as hp 
+} from 'react-native-responsive-screen';
+import { fontSize, spacing, borderRadius } from '../../utils/responsiveHelper';
 
 const FormsStyle = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 20,
-    backgroundColor: '#f8f9fa', // Light background for better readability
+    padding: spacing.lg,
+    backgroundColor: '#f8f9fa',
+    paddingTop: Platform.OS === 'ios' ? hp('6%') : StatusBar.currentHeight + hp('2%'),
   },
   progressContainer: {
-    marginTop: 20, // Adjust the spacing to bring progress steps slightly below
+    marginTop: hp('2.5%'),
   },
   stepContent: {
     flex: 1,
-    paddingVertical: 20,
+    paddingVertical: hp('2.5%'),
   },
   label: {
-    fontSize: 16,
-    fontWeight: 'bold', // Make labels bold
-    color: '#4a4a4a', // Neutral dark color for labels
-    marginBottom: 8,
+    fontSize: fontSize(16),
+    fontWeight: 'bold',
+    color: '#4a4a4a',
+    marginBottom: hp('1%'),
   },
   input: {
     width: '100%',
-    height: 50,
-    backgroundColor: '#ffffff', // Pure white for better contrast
-    borderColor: '#ced4da', // Subtle border for input field
+    height: hp('6%'),
+    backgroundColor: '#ffffff',
+    borderColor: '#ced4da',
     borderWidth: 1,
-    borderRadius: 8,
-    paddingHorizontal: 15,
-    marginBottom: 20, // Add spacing between fields
-    fontSize: 14,
-    color: '#212529', // Darker text for better visibility
+    borderRadius: borderRadius.md,
+    paddingHorizontal: spacing.md,
+    marginBottom: hp('2.5%'),
+    fontSize: fontSize(14),
+    color: '#212529',
   },
   inputPlaceholder: {
-    color: '#6c757d', // Muted color for placeholders
+    color: '#6c757d',
   },
   button: {
-    backgroundColor: '#007bff', // Bootstrap blue for buttons
-    borderRadius: 8,
-    paddingVertical: 12,
+    backgroundColor: '#007bff',
+    borderRadius: borderRadius.md,
+    paddingVertical: hp('1.5%'),
     alignItems: 'center',
-    marginTop: 20,
+    marginTop: hp('2.5%'),
   },
   buttonText: {
-    color: '#ffffff', // White text for buttons
-    fontSize: 16,
+    color: '#ffffff',
+    fontSize: fontSize(16),
     fontWeight: '600',
   },
 });

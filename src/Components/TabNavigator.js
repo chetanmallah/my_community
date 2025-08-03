@@ -137,6 +137,11 @@ import {
   Ionicons,
   Feather,
 } from '@expo/vector-icons';
+import { 
+  widthPercentageToDP as wp, 
+  heightPercentageToDP as hp 
+} from 'react-native-responsive-screen';
+import { fontSize, isSmallDevice } from '../utils/responsiveHelper';
 import HomeScreen from '../Screens/HomePage/Home';
 import ProfileScreen from '../Screens/ProfilePage/Profile';
 import Explore from '../Screens/ExplorePage/Explore';
@@ -162,22 +167,22 @@ const TabNavigator = () => {
           left: 0,
           right: 0,
           elevation: 10,
-          height: 65,
-          paddingBottom: 8,
-          paddingTop: 5,
-          borderTopLeftRadius: 25,
-          borderTopRightRadius: 25,
+          height: hp(isSmallDevice ? '8%' : '8.5%'),
+          paddingBottom: Platform.OS === 'ios' ? hp('2%') : hp('1%'),
+          paddingTop: hp('0.6%'),
+          borderTopLeftRadius: wp('6%'),
+          borderTopRightRadius: wp('6%'),
           shadowColor: '#000',
           shadowOffset: {
             width: 0,
-            height: -3,
+            height: -hp('0.4%'),
           },
           shadowOpacity: 0.1,
-          shadowRadius: 4,
+          shadowRadius: wp('1%'),
           borderTopWidth: 0,
         },
         tabBarLabelStyle: {
-          fontSize: 12,
+          fontSize: fontSize(12),
           fontWeight: '600',
         },
         headerShown: false,
@@ -192,7 +197,7 @@ const TabNavigator = () => {
             <MaterialCommunityIcons
               name={focused ? "home" : "home-outline"}
               color={color}
-              size={focused ? 28 : 24}
+              size={focused ? (isSmallDevice ? 26 : 28) : (isSmallDevice ? 22 : 24)}
             />
           ),
         }}
@@ -207,7 +212,7 @@ const TabNavigator = () => {
             <Feather
               name="plus-square"
               color={color}
-              size={focused ? 26 : 22}
+              size={focused ? (isSmallDevice ? 24 : 26) : (isSmallDevice ? 20 : 22)}
             />
           ),
         }}
@@ -221,15 +226,15 @@ const TabNavigator = () => {
           tabBarIcon: ({ color, focused }) => (
             <View
               style={{
-                borderRadius: 16,
+                borderRadius: wp('4%'),
                 backgroundColor: focused ? 'rgba(36, 37, 38, 0.08)' : 'transparent',
-                padding: 4,
+                padding: wp('1%'),
               }}
             >
               <Ionicons
                 name={focused ? "people" : "people-outline"}
                 color={color}
-                size={focused ? 28 : 24}
+                size={focused ? (isSmallDevice ? 26 : 28) : (isSmallDevice ? 22 : 24)}
               />
             </View>
           ),
@@ -245,7 +250,7 @@ const TabNavigator = () => {
             <Ionicons
               name={focused ? "person" : "person-outline"}
               color={color}
-              size={focused ? 26 : 22}
+              size={focused ? (isSmallDevice ? 24 : 26) : (isSmallDevice ? 20 : 22)}
             />
           ),
         }}

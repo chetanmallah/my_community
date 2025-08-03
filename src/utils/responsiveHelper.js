@@ -1,27 +1,62 @@
-// utils/responsiveHelper.js
-import { Dimensions, Platform } from 'react-native';
+import { Dimensions, Platform, PixelRatio } from 'react-native';
 
 const { width: screenWidth, height: screenHeight } = Dimensions.get('window');
 
-// ✅ Fine-grained screen size breakpoints
-export const isPixel2 = screenWidth <= 415;        // For Pixel 2 and older phones
-export const isSmallDevice = screenWidth <= 480;   // Generic small devices
-export const isMediumDevice = screenWidth > 480 && screenWidth < 768; // OnePlus, Samsung, etc.
-export const isLargeDevice = screenWidth >= 768;   // Tablets, foldables
+// Screen size breakpoints
+export const isPixel2 = screenWidth <= 415;
+export const isSmallDevice = screenWidth <= 480;
+export const isMediumDevice = screenWidth > 480 && screenWidth < 768;
+export const isLargeDevice = screenWidth >= 768;
+export const isTablet = screenWidth >= 768;
 
-// ✅ Font scaling: Adjust fontSize() to scale with screen size
+// Responsive font scaling
 export const fontSize = (size) => {
-  if (isPixel2) return size * 0.78;     // 🔥 More aggressive scale down for Pixel 2
-  if (isSmallDevice) return size * 0.87;
-  if (isMediumDevice) return size;      // No scaling on standard Android screens
-  return size * 1.1;                    // Scale up for tablets
+  const scale = screenWidth / 375; // Base on iPhone 6/7/8 width
+  const newSize = size * scale;
+  
+  if (Platform.OS === 'ios') {
+    return Math.round(PixelRatio.roundToNearestPixel(newSize));
+  }
+  
+  if (isPixel2) return Math.round(newSize * 0.85);
+  if (isSmallDevice) return Math.round(newSize * 0.9);
+  if (isLargeDevice) return Math.round(newSize * 1.1);
+  return Math.round(newSize);
 };
 
-// ✅ Optional: Use for element sizing (padding, margin, height, width)
+// Responsive width scaling
 export const scaleWidth = (size) => {
-  return (screenWidth / 375) * size; // 375 is iPhone 6/7/8 reference width
+  return (screenWidth / 375) * size;
 };
 
+// Responsive height scaling
 export const scaleHeight = (size) => {
-  return (screenHeight / 812) * size; // 812 is iPhone X reference height
+  return (screenHeight / 812) * size;
+};
+
+// Get responsive dimensions
+export const getResponsiveDimensions = () => ({
+  screenWidth,
+  screenHeight,
+  isSmallDevice,
+  isMediumDevice,
+  isLargeDevice,
+  isTablet,
+});
+
+// Responsive spacing
+export const spacing = {
+  xs: wp('1%'),
+  sm: wp('2%'),
+  md: wp('4%'),
+  lg: wp('6%'),
+  xl: wp('8%'),
+};
+
+// Responsive border radius
+export const borderRadius = {
+  sm: wp('2%'),
+  md: wp('3%'),
+  lg: wp('4%'),
+  xl: wp('6%'),
 };

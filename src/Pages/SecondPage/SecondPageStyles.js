@@ -44,102 +44,95 @@
 // 
 
 
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Platform, StatusBar } from 'react-native';
+import { 
+  widthPercentageToDP as wp, 
+  heightPercentageToDP as hp 
+} from 'react-native-responsive-screen';
+import { fontSize, spacing, borderRadius, isSmallDevice } from '../../utils/responsiveHelper';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f9fafb',  // Subtle light gradient background for soft modern aesthetics
+    backgroundColor: '#f9fafb',
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 20,
-    paddingTop: 30,  // Extra padding for top to make the title prominent
+    padding: spacing.lg,
+    paddingTop: Platform.OS === 'ios' ? hp('8%') : StatusBar.currentHeight + hp('4%'),
   },
   title: {
-    fontSize: 35,  // Larger font size for title to make it stand out
-    fontWeight: '900',  // Bold weight for prominence
-    color: 'black',  // Dark gray for contrast against soft background
-    marginBottom: 40,
+    fontSize: fontSize(isSmallDevice ? 30 : 35),
+    fontWeight: '900',
+    color: 'black',
+    marginBottom: hp('5%'),
     textAlign: 'center',
-    letterSpacing: 1.5,  // More letter spacing to give a sophisticated look
-    fontFamily: 'Roboto',  // Custom font for better visual appearance
+    letterSpacing: 1.5,
   },
   radioGroup: {
     width: '100%',
-    marginBottom: 40,
-    paddingHorizontal: 20,  // Ensuring spacing around content for better visual balance
+    marginBottom: hp('5%'),
+    paddingHorizontal: spacing.lg,
   },
   radioLabel: {
-    fontSize: 20,  // Slightly larger label for better readability
-    color: '#34495e',  // Dark color for better contrast
-    marginBottom: 10,
+    fontSize: fontSize(20),
+    color: '#34495e',
+    marginBottom: hp('1.2%'),
     textAlign: 'center',
-    fontFamily: 'Roboto',  // Using same font for uniformity
   },
   radioButtonContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginVertical: 12,  // Proper space between radio buttons
-    paddingHorizontal: 20,
-    paddingVertical: 12,  // Enough padding to make the buttons feel spacious
-    borderRadius: 10,  // Rounded edges for smoother feel
-    backgroundColor: '#ecf0f1',  // Light grey background for each option
+    marginVertical: hp('1.5%'),
+    paddingHorizontal: spacing.lg,
+    paddingVertical: hp('1.5%'),
+    borderRadius: borderRadius.md,
+    backgroundColor: '#ecf0f1',
     shadowColor: '#bdc3c7',
-    
-    shadowOffset: { width: 0, height: 5 },
+    shadowOffset: { width: 0, height: hp('0.6%') },
     shadowOpacity: 0.3,
-    shadowRadius: 8,
+    shadowRadius: wp('2%'),
   },
   radioButtonText: {
-    fontSize: 18,
-    color: '#34495e',  // Keeping the text in dark tones for clarity
-    marginLeft: 12,  // Spacing out the text from the radio button
-    fontFamily: 'Roboto',  // Consistency in font for the text
+    fontSize: fontSize(18),
+    color: '#34495e',
+    marginLeft: spacing.md,
   },
   button: {
-    backgroundColor: '#212529',  // Soft blue color for a modern touch
-    paddingVertical: 16,
-    paddingHorizontal: 50,
-    borderRadius: 30,  // Round button with more curvature for a smoother look
-    marginTop: 30,
-    elevation: 10,  // Soft shadow to give a floating feel
-    shadowColor: '#212529',  // A slightly darker shadow for depth
-    shadowOffset: { width: 0, height: 10 },
+    backgroundColor: '#212529',
+    paddingVertical: hp('2%'),
+    paddingHorizontal: wp('12%'),
+    borderRadius: borderRadius.xl,
+    marginTop: hp('4%'),
+    elevation: 10,
+    shadowColor: '#212529',
+    shadowOffset: { width: 0, height: hp('1.2%') },
     shadowOpacity: 0.3,
-    shadowRadius: 15,
-    transform: [{ scale: 1 }],  // Subtle scale effect on press to give interactivity
-    transition: 'transform 0.3s ease-in-out',  // Smooth transition when interacting with the button
+    shadowRadius: wp('4%'),
   },
   buttonText: {
     color: '#fff',
-    fontSize: 20,
-    fontWeight: '600',  // Slightly lighter than bold for a soft feel
+    fontSize: fontSize(20),
+    fontWeight: '600',
     textAlign: 'center',
-    fontFamily: 'Roboto',  // Ensuring the text font matches throughout
   },
-  
-submitButton: {
-  backgroundColor: '#212529',  // Blue color for submit button
-  paddingVertical: 16,
-  paddingHorizontal: 50,
-  borderRadius: 30,  // Rounded corners for smooth aesthetics
-  marginTop: 30,  // Space above the button
-  elevation: 10,  // Shadow to give depth
-  shadowColor: '#2980b9',
-  shadowOffset: { width: 0, height: 10 },
-  shadowOpacity: 0.3,
-  shadowRadius: 15,
-  transform: [{ scale: 1 }],
-  transition: 'transform 0.3s ease-in-out',  // Smooth transition effect on press
-},
-
-submitButtonText: {
-  color: '#fff',  // White color for text on blue button
-  fontSize: 20,
-  fontWeight: '800',  // Slightly bold to stand out
-  textAlign: 'center',  // Center the text in the button
-  fontFamily: 'Roboto',  // Consistency with the rest of the app's typography
-},
+  submitButton: {
+    backgroundColor: '#212529',
+    paddingVertical: hp('2%'),
+    paddingHorizontal: wp('12%'),
+    borderRadius: borderRadius.xl,
+    marginTop: hp('4%'),
+    elevation: 10,
+    shadowColor: '#2980b9',
+    shadowOffset: { width: 0, height: hp('1.2%') },
+    shadowOpacity: 0.3,
+    shadowRadius: wp('4%'),
+  },
+  submitButtonText: {
+    color: '#fff',
+    fontSize: fontSize(20),
+    fontWeight: '800',
+    textAlign: 'center',
+  },
 });
 
 export default styles;

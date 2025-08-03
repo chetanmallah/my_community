@@ -215,11 +215,12 @@
 
 // making responsive design 
 
-import { StyleSheet } from "react-native";
+import { StyleSheet, Platform, StatusBar } from "react-native";
 import { 
   widthPercentageToDP as wp, 
   heightPercentageToDP as hp
 } from "react-native-responsive-screen";
+import { fontSize, isSmallDevice, spacing, borderRadius } from '../../utils/responsiveHelper';
 
 export default StyleSheet.create({
   scrollContainer: {
@@ -230,38 +231,38 @@ export default StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    paddingHorizontal: wp('5%'),
+    paddingHorizontal: spacing.md,
     justifyContent: 'center',
   },
   header: {
     width: '100%',
-    marginTop: hp('7%'),
+    marginTop: Platform.OS === 'ios' ? hp('8%') : StatusBar.currentHeight + hp('4%'),
     marginBottom: hp('1.5%'),
   },
   logo: {
-    fontSize: wp('7%'),
+    fontSize: fontSize(28),
     fontWeight: "bold",
     textAlign: "center",
     color: "#333",
     marginBottom: hp('2.5%'),
     marginTop: hp('1.5%'),
   },
-logoBold: {
-  color: "#111", // dark black
-  fontWeight: "900",
-  fontSize: wp('7%'),
-},
-logoLight: {
-  color: "#555", // medium grey
-  fontWeight: "600",
-  fontSize: wp('6.8%'),
-},
+  logoBold: {
+    color: "#111",
+    fontWeight: "900",
+    fontSize: fontSize(28),
+  },
+  logoLight: {
+    color: "#555",
+    fontWeight: "600",
+    fontSize: fontSize(26),
+  },
   toggleContainer: {
     flexDirection: "row",
     backgroundColor: "#f0f0f0",
-    borderRadius: wp('12%'),
+    borderRadius: borderRadius.xl,
     overflow: "hidden",
-    width: '80%',
+    width: wp('80%'),
     height: hp('6%'),
     alignSelf: 'center',
     marginBottom: hp('2.5%'),
@@ -275,7 +276,7 @@ logoLight: {
     backgroundColor: "#000",
   },
   toggleText: {
-    fontSize: wp('4.2%'),
+    fontSize: fontSize(16),
     fontWeight: "600",
     color: "#666",
   },
@@ -287,11 +288,11 @@ logoLight: {
     marginBottom: hp('2%'),
   },
   sectionTitle: {
-    fontSize: wp('3.5%'),
+    fontSize: fontSize(14),
     fontWeight: "600",
     color: "#555",
     marginBottom: hp('0.8%'),
-    marginLeft: wp('1.5%'),
+    marginLeft: spacing.sm,
   },
   genderToggleContainer: {
     flexDirection: "row",
@@ -301,10 +302,10 @@ logoLight: {
   genderOption: {
     flex: 1,
     paddingVertical: hp('1.2%'),
-    borderRadius: wp('6%'),
+    borderRadius: borderRadius.xl,
     borderWidth: 1,
     borderColor: "#ddd",
-    marginHorizontal: wp('1.5%'),
+    marginHorizontal: spacing.sm,
     backgroundColor: "#f9f9f9",
     alignItems: "center",
   },
@@ -315,12 +316,12 @@ logoLight: {
   genderText: {
     color: "#555",
     fontWeight: "600",
-    fontSize: wp('4%'),
+    fontSize: fontSize(16),
   },
   genderSelectedText: {
     color: "#fff",
     fontWeight: "600",
-    fontSize: wp('4%'),
+    fontSize: fontSize(16),
   },
   inputRow: {
     flexDirection: "row",
@@ -331,15 +332,15 @@ logoLight: {
     flex: 1,
     borderWidth: 1,
     borderColor: "#ddd",
-    borderRadius: 10,
-    paddingHorizontal: wp('3.5%'),
+    borderRadius: borderRadius.md,
+    paddingHorizontal: spacing.md,
     backgroundColor: "#fff",
     height: hp('6.5%'),
-    marginHorizontal: wp('1.5%'),
+    marginHorizontal: spacing.sm,
     justifyContent: "center",
   },
   nameInput: {
-    fontSize: wp('4%'),
+    fontSize: fontSize(16),
     color: "#333",
     paddingVertical: 0,
   },
@@ -348,23 +349,23 @@ logoLight: {
     alignItems: "center",
     borderWidth: 1,
     borderColor: "#ddd",
-    borderRadius: 10,
-    paddingHorizontal: wp('3.5%'),
+    borderRadius: borderRadius.md,
+    paddingHorizontal: spacing.md,
     marginBottom: hp('2%'),
     height: hp('6.5%'),
     backgroundColor: "#fff",
   },
   input: {
     flex: 1,
-    fontSize: wp('4%'),
+    fontSize: fontSize(16),
     color: "#333",
     paddingVertical: hp('0.8%'),
-    marginLeft: wp('2%'),
+    marginLeft: spacing.sm,
   },
   actionButton: {
     backgroundColor: "#000",
     paddingVertical: hp('2%'),
-    borderRadius: 10,
+    borderRadius: borderRadius.md,
     alignItems: "center",
     marginTop: hp('2%'),
     marginBottom: hp('1%'),
@@ -372,14 +373,14 @@ logoLight: {
   actionButtonText: {
     color: "white",
     fontWeight: "bold",
-    fontSize: wp('4.5%'),
+    fontSize: fontSize(16),
   },
   privacyPolicyContainer: {
     marginTop: hp('1.5%'),
-    paddingHorizontal: wp('2.5%'),
+    paddingHorizontal: spacing.md,
   },
   privacyPolicyText: {
-    fontSize: wp('3%'),
+    fontSize: fontSize(12),
     color: "#666",
     textAlign: "center",
     lineHeight: hp('2.2%'),
@@ -391,7 +392,7 @@ logoLight: {
   },
   errorText: {
     color: "#d32f2f",
-    fontSize: wp('3.5%'),
+    fontSize: fontSize(14),
     textAlign: "center",
     marginBottom: hp('1.5%'),
     marginTop: hp('0.8%'),
@@ -408,14 +409,14 @@ logoLight: {
     marginVertical: hp('2%'),
   },
   checkbox: {
-    width: wp('5%'),
-    height: wp('5%'),
+    width: wp(isSmallDevice ? '5%' : '4.5%'),
+    height: wp(isSmallDevice ? '5%' : '4.5%'),
     borderWidth: 1,
     borderColor: '#ccc',
-    borderRadius: 4,
+    borderRadius: borderRadius.sm,
     justifyContent: 'center',
     alignItems: 'center',
-    marginRight: wp('2%'),
+    marginRight: spacing.sm,
   },
   checkboxChecked: {
     backgroundColor: '#363a3dff',
@@ -424,10 +425,10 @@ logoLight: {
   checkboxCheckmark: {
     color: 'white',
     fontWeight: 'bold',
-    fontSize: wp('4%'),
+    fontSize: fontSize(14),
   },
   termsText: {
-    fontSize: wp('3.5%'),
+    fontSize: fontSize(14),
     color: '#666',
     flex: 1,
   },

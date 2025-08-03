@@ -1,19 +1,21 @@
-// components/TopBar/TopBarStyles.js
-import { StyleSheet, Platform } from 'react-native';
-import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
-import { isSmallDevice } from '../../utils/responsiveHelper';
+import { StyleSheet, Platform, StatusBar } from 'react-native';
+import { 
+  widthPercentageToDP as wp, 
+  heightPercentageToDP as hp 
+} from 'react-native-responsive-screen';
+import { isSmallDevice, fontSize } from '../../utils/responsiveHelper';
 
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#212529',
     paddingHorizontal: wp(isSmallDevice ? '4%' : '4%'),
-    paddingTop : '10%',
+    paddingTop: Platform.OS === 'ios' ? hp('6%') : StatusBar.currentHeight + hp('2%'),
     paddingBottom: hp(isSmallDevice ? '1.5%' : '2%'),
     elevation: 8,
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 3 },
+    shadowOffset: { width: 0, height: hp('0.4%') },
     shadowOpacity: 0.2,
-    shadowRadius: 6,
+    shadowRadius: wp('1.5%'),
     borderBottomLeftRadius: wp('5%'),
     borderBottomRightRadius: wp('5%'),
   },

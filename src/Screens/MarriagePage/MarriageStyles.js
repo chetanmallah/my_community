@@ -1,5 +1,4 @@
-// MarriageStyles.js
-import { StyleSheet } from "react-native";
+import { StyleSheet, Platform, StatusBar } from "react-native";
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
@@ -10,29 +9,30 @@ import {
   isSmallDevice,
   isMediumDevice,
   isLargeDevice,
+  spacing,
+  borderRadius,
 } from "../../utils/responsiveHelper";
 
 const MarriageStyles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    paddingTop: "1%"
+    paddingTop: Platform.OS === 'ios' ? hp('6%') : StatusBar.currentHeight + hp('2%'),
   },
   scrollContent: {
-    paddingHorizontal: wp(isPixel2 ? "5%" : isLargeDevice ? "12%" : "8%"),
-    
+    paddingHorizontal: isLargeDevice ? wp("12%") : spacing.lg,
     paddingBottom: hp("5%"),
   },
   header: {
     marginBottom: hp("4%"),
   },
   title: {
-    fontSize: fontSize(36), // 🔥 Pixel 2 auto-adjust handled in fontSize()
+    fontSize: fontSize(isSmallDevice ? 32 : 36),
     fontWeight: "700",
     color: "#000",
     marginBottom: hp("1%"),
     textAlign: "center",
-    marginTop: hp(isPixel2 ? "5%" : "8%"),
+    marginTop: hp(isSmallDevice ? "4%" : "6%"),
   },
   subtitle: {
     fontSize: fontSize(16),
@@ -51,15 +51,15 @@ const MarriageStyles = StyleSheet.create({
   genderRow: {
     flexDirection: "row",
     justifyContent: "space-between",
-    gap: wp(isPixel2 ? "3%" : "4%"),
+    gap: spacing.md,
   },
   genderButton: {
     flex: 1,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    paddingVertical: hp(isPixel2 ? "1.8%" : "2.2%"),
-    borderRadius: wp("3%"),
+    paddingVertical: hp(isSmallDevice ? "1.8%" : "2.2%"),
+    borderRadius: borderRadius.md,
     backgroundColor: "#f5f5f5",
   },
   genderButtonSelected: {
@@ -69,7 +69,7 @@ const MarriageStyles = StyleSheet.create({
     fontSize: fontSize(16),
     fontWeight: "500",
     color: "#000",
-    marginLeft: wp("3%"),
+    marginLeft: spacing.md,
   },
   genderTextSelected: {
     color: "#fff",
@@ -77,13 +77,13 @@ const MarriageStyles = StyleSheet.create({
   ageRow: {
     flexDirection: "row",
     alignItems: "center",
-    gap: wp(isPixel2 ? "2%" : "3%"),
+    gap: spacing.md,
   },
   ageInput: {
     flex: 1,
     borderBottomWidth: 1,
     borderColor: "#ddd",
-    paddingVertical: hp(isPixel2 ? "1.3%" : "1.7%"),
+    paddingVertical: hp(isSmallDevice ? "1.3%" : "1.7%"),
     fontSize: fontSize(16.5),
   },
   ageSeparator: {
@@ -92,22 +92,22 @@ const MarriageStyles = StyleSheet.create({
     fontWeight: "500",
   },
   radioGroup: {
-    marginLeft: wp("-3%"),
+    marginLeft: -spacing.md,
   },
   radioOption: {
     flexDirection: "row",
     alignItems: "center",
-    paddingVertical: hp(isPixel2 ? "1%" : "1.3%"),
+    paddingVertical: hp(isSmallDevice ? "1%" : "1.3%"),
   },
   radioText: {
     fontSize: fontSize(16.5),
     color: "#000",
-    marginLeft: wp("3%"),
+    marginLeft: spacing.md,
   },
   searchButton: {
     backgroundColor: "#000",
-    paddingVertical: hp(isPixel2 ? "2%" : "2.5%"),
-    borderRadius: wp("3%"),
+    paddingVertical: hp(isSmallDevice ? "2%" : "2.5%"),
+    borderRadius: borderRadius.md,
     alignItems: "center",
     marginTop: hp("3%"),
   },

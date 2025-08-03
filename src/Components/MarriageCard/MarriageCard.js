@@ -216,6 +216,11 @@ import {
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
+import { 
+  widthPercentageToDP as wp, 
+  heightPercentageToDP as hp 
+} from 'react-native-responsive-screen';
+import { fontSize, isSmallDevice } from '../../utils/responsiveHelper';
 
 const { width } = Dimensions.get("window");
 
@@ -324,19 +329,19 @@ const DetailRow = ({ icon, label, value }) => (
 const styles = StyleSheet.create({
   card: {
     backgroundColor: "#fff",
-    marginVertical: 16,
-    marginHorizontal: 12,
-    borderRadius: 18,
+    marginVertical: hp('2%'),
+    marginHorizontal: wp('3%'),
+    borderRadius: wp('4.5%'),
     overflow: "hidden",
     shadowColor: "#000",
-    shadowOffset: { width: 0, height: 6 },
+    shadowOffset: { width: 0, height: hp('0.7%') },
     shadowOpacity: 0.2,
-    shadowRadius: 12,
+    shadowRadius: wp('3%'),
     elevation: 6,
   },
   fullImage: {
     width: "100%",
-    height: width * 0.6,
+    height: hp(isSmallDevice ? '35%' : '40%'),
     resizeMode: "cover",
   },
   carouselContainer: {
@@ -344,42 +349,42 @@ const styles = StyleSheet.create({
   },
   carouselImage: {
     width,
-    height: width * 0.6,
+    height: hp(isSmallDevice ? '35%' : '40%'),
     resizeMode: "cover",
   },
   imageCount: {
     position: "absolute",
-    bottom: 10,
-    right: 10,
+    bottom: wp('2.5%'),
+    right: wp('2.5%'),
     backgroundColor: "#000000aa",
-    paddingHorizontal: 8,
-    paddingVertical: 4,
-    borderRadius: 12,
+    paddingHorizontal: wp('2%'),
+    paddingVertical: hp('0.5%'),
+    borderRadius: wp('3%'),
   },
   imageCountText: {
     color: "#fff",
-    fontSize: 14,
+    fontSize: fontSize(14),
     fontWeight: "600",
   },
   cardDetails: {
-    paddingHorizontal: 16,
-    paddingVertical: 18,
+    paddingHorizontal: wp('4%'),
+    paddingVertical: hp('2.2%'),
     backgroundColor: "#fff",
   },
   detailsRow: {
     flexDirection: "row",
     alignItems: "center",
-    marginBottom: 10,
+    marginBottom: hp('1.2%'),
   },
   detailsLabel: {
-    marginLeft: 8,
-    fontSize: 15,
+    marginLeft: wp('2%'),
+    fontSize: fontSize(15),
     fontWeight: "600",
     color: "#333",
   },
   detailsValue: {
-    marginLeft: 6,
-    fontSize: 15,
+    marginLeft: wp('1.5%'),
+    fontSize: fontSize(15),
     fontWeight: "500",
     color: "#000",
   },
@@ -387,30 +392,30 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    paddingHorizontal: 16,
-    paddingBottom: 16,
+    paddingHorizontal: wp('4%'),
+    paddingBottom: hp('2%'),
     backgroundColor: "#f9f9f9",
   },
   viewProfileButton: {
     flexDirection: "row",
     alignItems: "center",
     backgroundColor: "#fff",
-    paddingHorizontal: 14,
-    paddingVertical: 8,
-    borderRadius: 30,
+    paddingHorizontal: wp('3.5%'),
+    paddingVertical: hp('1%'),
+    borderRadius: wp('7.5%'),
     borderColor: "#000",
     borderWidth: 1.3,
   },
   addButton: {
     backgroundColor: "#fff",
-    padding: 12,
-    borderRadius: 30,
+    padding: wp('3%'),
+    borderRadius: wp('7.5%'),
     borderWidth: 1.3,
     borderColor: "#000",
   },
   buttonText: {
-    marginLeft: 6,
-    fontSize: 14,
+    marginLeft: wp('1.5%'),
+    fontSize: fontSize(14),
     fontWeight: "600",
     color: "#000",
   },

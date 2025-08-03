@@ -1,6 +1,20 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { View, Text, Image, TouchableOpacity, FlatList, StyleSheet, Dimensions, Animated } from 'react-native';
+import { 
+  View, 
+  Text, 
+  Image, 
+  TouchableOpacity, 
+  FlatList, 
+  StyleSheet, 
+  Dimensions, 
+  Animated 
+} from 'react-native';
 import { Linking } from 'react-native';
+import { 
+  widthPercentageToDP as wp, 
+  heightPercentageToDP as hp 
+} from 'react-native-responsive-screen';
+import { fontSize, isSmallDevice } from '../../utils/responsiveHelper';
 
 const { width: screenWidth } = Dimensions.get('window'); // Get screen width for responsive design
 
@@ -123,56 +137,62 @@ const Banner = () => {
 
 const styles = StyleSheet.create({
   container: {
-    marginVertical: 15,
+    marginVertical: hp('2%'),
     alignItems: 'center', // Centering the banner
   },
   bannerContainer: {
-    width: screenWidth - 40, // Making it a bit smaller than full width
-    height: 240, // Increased height for a larger look
-    borderRadius: 15, // Smooth rounded corners
+    width: screenWidth - wp('10%'),
+    height: hp(isSmallDevice ? '28%' : '30%'),
+    borderRadius: wp('4%'),
     backgroundColor: '#FFF', // White background like a card
     shadowColor: '#000', // Shadow effect for elevation
-    shadowOffset: { width: 0, height: 2 },
+    shadowOffset: { width: 0, height: hp('0.3%') },
     shadowOpacity: 0.2,
-    shadowRadius: 4,
+    shadowRadius: wp('1%'),
     elevation: 5, // For Android shadow
     overflow: 'hidden',
     alignItems: 'center',
     justifyContent: 'center',
   },
   bannerImage: {
-    width: '92%', // Smaller than the container to give white border effect
-    height: '92%', // Maintain aspect ratio inside the card
-    borderRadius: 10, // Rounded corners for the image
+    width: '92%',
+    height: '92%',
+    borderRadius: wp('2.5%'),
   },
   textOverlay: {
     position: 'absolute',
-    bottom: 10,
-    left: 10,
-    right: 10,
+    bottom: wp('2.5%'),
+    left: wp('2.5%'),
+    right: wp('2.5%'),
     backgroundColor: 'rgba(0, 0, 0, 0.5)', // Dark overlay for text
-    paddingVertical: 5,
-    borderRadius: 5,
+    paddingVertical: hp('0.6%'),
+    borderRadius: wp('1.2%'),
   },
   headline: {
     color: '#FFF',
-    fontSize: 18,
+    fontSize: fontSize(18),
     fontWeight: 'bold',
     textAlign: 'center',
   },
   carouselCounter: {
     position: 'absolute',
-    top: 10,
-    right: 15,
+    top: wp('2.5%'),
+    right: wp('4%'),
     backgroundColor: 'rgba(0, 0, 0, 0.7)',
-    paddingHorizontal: 8,
-    paddingVertical: 3,
-    borderRadius: 15,
+    paddingHorizontal: wp('2%'),
+    paddingVertical: hp('0.4%'),
+    borderRadius: wp('4%'),
   },
   counterText: {
     color: '#FFF',
-    fontSize: 14,
+    fontSize: fontSize(14),
     fontWeight: 'bold',
+  },
+  noDataText: {
+    textAlign: 'center',
+    color: '#888',
+    fontSize: fontSize(16),
+    marginTop: hp('2.5%'),
   },
 });
 

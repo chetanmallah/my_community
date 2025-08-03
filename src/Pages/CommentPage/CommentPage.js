@@ -272,6 +272,11 @@ import {
 import { Ionicons, Feather } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from '@react-navigation/native';
+import { 
+  widthPercentageToDP as wp, 
+  heightPercentageToDP as hp 
+} from 'react-native-responsive-screen';
+import { fontSize, spacing, borderRadius, isSmallDevice } from '../../utils/responsiveHelper';
 import { addComment } from '../../utils/addComment';
 import { deleteComment } from '../../utils/deleteComment';
 
@@ -457,31 +462,32 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
   },
-header: {
-  flexDirection: 'row',
-  alignItems: 'center',
-  paddingHorizontal: 14,
-  paddingBottom: 10,
-  borderBottomWidth: 1,
-  borderColor: '#eee',
-  backgroundColor: '#fff',
-},
+  header: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: spacing.md,
+    paddingTop: Platform.OS === 'ios' ? hp('6%') : StatusBar.currentHeight + hp('2%'),
+    paddingBottom: hp('1.2%'),
+    borderBottomWidth: 1,
+    borderColor: '#eee',
+    backgroundColor: '#fff',
+  },
   headerText: {
-    fontSize: 18,
+    fontSize: fontSize(18),
     fontWeight: '600',
-    marginLeft: 12,
+    marginLeft: spacing.md,
   },
   commentRow: {
     flexDirection: 'row',
     alignItems: 'flex-start',
-    paddingVertical: 12,
-    paddingHorizontal: 14,
+    paddingVertical: hp('1.5%'),
+    paddingHorizontal: spacing.md,
   },
   avatar: {
-    width: 36,
-    height: 36,
-    borderRadius: 18,
-    marginRight: 10,
+    width: wp(isSmallDevice ? '9%' : '8%'),
+    height: wp(isSmallDevice ? '9%' : '8%'),
+    borderRadius: wp('4.5%'),
+    marginRight: spacing.sm,
   },
   textSection: {
     flex: 1,
@@ -489,13 +495,13 @@ header: {
   username: {
     fontWeight: '600',
     color: '#000',
-    fontSize: 14,
-    marginBottom: 2,
+    fontSize: fontSize(14),
+    marginBottom: hp('0.2%'),
   },
   commentText: {
-    fontSize: 14,
+    fontSize: fontSize(14),
     color: '#222',
-    marginBottom: 4,
+    marginBottom: hp('0.5%'),
   },
   metaRow: {
     flexDirection: 'row',
@@ -503,23 +509,23 @@ header: {
     flexWrap: 'wrap',
   },
   time: {
-    fontSize: 12,
+    fontSize: fontSize(12),
     color: '#999',
   },
   replyText: {
-    fontSize: 12,
+    fontSize: fontSize(12),
     color: '#555',
-    marginLeft: 10,
+    marginLeft: spacing.sm,
   },
   heartIcon: {
-    marginLeft: 8,
-    marginTop: 2,
+    marginLeft: spacing.sm,
+    marginTop: hp('0.2%'),
   },
   inputContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingHorizontal: 14,
-    paddingVertical: 10,
+    paddingHorizontal: spacing.md,
+    paddingVertical: hp('1.2%'),
     borderTopWidth: 1,
     borderColor: '#eee',
     backgroundColor: '#fff',
@@ -527,24 +533,24 @@ header: {
     bottom: 0,
     left: 0,
     right: 0,
+    paddingBottom: Platform.OS === 'ios' ? hp('4%') : hp('1.2%'),
   },
   input: {
     flex: 1,
     backgroundColor: '#f1f1f1',
-    borderRadius: 20,
-    paddingHorizontal: 14,
-    paddingVertical: 8,
-    fontSize: 14,
+    borderRadius: borderRadius.xl,
+    paddingHorizontal: spacing.md,
+    paddingVertical: hp('1%'),
+    fontSize: fontSize(14),
     color: '#000',
   },
   sendBtn: {
-    marginLeft: 10,
+    marginLeft: spacing.sm,
     backgroundColor: '#000',
-    borderRadius: 20,
-    padding: 8,
+    borderRadius: borderRadius.xl,
+    padding: wp('2%'),
   },
 
-  // Modal Focused Comment
   modalOverlay: {
     flex: 1,
     backgroundColor: 'rgba(0,0,0,0.7)',
@@ -553,46 +559,46 @@ header: {
   },
   modalCard: {
     backgroundColor: '#fff',
-    borderRadius: 16,
-    padding: 20,
-    width: '85%',
+    borderRadius: borderRadius.lg,
+    padding: spacing.lg,
+    width: wp('85%'),
     alignItems: 'center',
   },
   modalAvatar: {
-    width: 60,
-    height: 60,
-    borderRadius: 30,
-    marginBottom: 10,
+    width: wp('15%'),
+    height: wp('15%'),
+    borderRadius: wp('7.5%'),
+    marginBottom: hp('1.2%'),
   },
   modalUsername: {
-    fontSize: 16,
+    fontSize: fontSize(16),
     fontWeight: '600',
-    marginBottom: 6,
+    marginBottom: hp('0.7%'),
   },
   modalText: {
-    fontSize: 14,
+    fontSize: fontSize(14),
     color: '#222',
     textAlign: 'center',
-    marginBottom: 12,
+    marginBottom: hp('1.5%'),
   },
   modalDeleteBtn: {
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: '#ffe6e6',
-    paddingVertical: 6,
-    paddingHorizontal: 16,
-    borderRadius: 10,
-    marginBottom: 10,
+    paddingVertical: hp('0.7%'),
+    paddingHorizontal: wp('4%'),
+    borderRadius: borderRadius.md,
+    marginBottom: hp('1.2%'),
   },
   modalDeleteText: {
     color: '#d00',
-    fontSize: 14,
+    fontSize: fontSize(14),
     fontWeight: '500',
-    marginLeft: 6,
+    marginLeft: wp('1.5%'),
   },
   modalClose: {
-    fontSize: 14,
+    fontSize: fontSize(14),
     color: '#555',
-    marginTop: 6,
+    marginTop: hp('0.7%'),
   },
 });

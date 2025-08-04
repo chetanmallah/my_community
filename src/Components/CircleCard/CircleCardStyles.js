@@ -1,60 +1,28 @@
-// // circleCardStyles.js
-// import { StyleSheet } from 'react-native';
-
-// export const styles = StyleSheet.create({
-//   cardContainer: {
-//     paddingVertical: 10,
-//   },
-//   circleCard: {
-//     width: 100,
-//     height: 130,
-//     justifyContent: 'center',
-//     alignItems: 'center',
-//     borderRadius: 20, // Rounded corners for the whole card
-//     borderWidth: 2,
-//     borderColor: '#ddd',
-//     backgroundColor: '#fff',
-//     marginHorizontal: 10, // Space between cards
-//     elevation: 5, // Shadow for Android
-//     shadowColor: '#000', // iOS Shadow
-//     shadowOffset: { width: 0, height: 4 },
-//     shadowOpacity: 0.2,
-//     shadowRadius: 6,
-//   },
-//   circleImage: {
-//     width: 70,
-//     height: 70,
-//     borderRadius: 35, // Makes the image circular
-//   },
-//   circleText: {
-//     fontSize: 14,
-//     color: '#333',
-//     marginTop: 8,
-//     textAlign: 'center',
-//   },
-// });
-
-
 import { StyleSheet } from 'react-native';
+import { 
+  widthPercentageToDP as wp, 
+  heightPercentageToDP as hp 
+} from 'react-native-responsive-screen';
+import { fontSize, isSmallDevice, spacing, borderRadius } from '../../utils/responsiveHelper';
 
 const styles = StyleSheet.create({
   loaderContainer: {
-    paddingVertical: 20,
+    paddingVertical: hp('2%'),
     alignItems: 'center',
   },
   circleCard: {
-    minWidth: 90,
-    minHeight: 90,
-    borderRadius: 50,
+    width: wp(isSmallDevice ? '20%' : '18%'),
+    height: wp(isSmallDevice ? '20%' : '18%'),
+    borderRadius: wp('10%'),
     justifyContent: 'center',
     alignItems: 'center',
-    marginHorizontal: 8,
-    padding: 10,
+    marginHorizontal: spacing.sm,
+    padding: spacing.sm,
     elevation: 4,
     shadowColor: '#000',
     shadowOpacity: 0.2,
-    shadowRadius: 4,
-    shadowOffset: { width: 0, height: 4 },
+    shadowRadius: wp('1%'),
+    shadowOffset: { width: 0, height: hp('0.5%') },
     borderWidth: 2,
   },
   activeCard: {
@@ -66,9 +34,10 @@ const styles = StyleSheet.create({
     borderColor: '#bdc3c7',
   },
   cardText: {
-    fontSize: 14,
+    fontSize: fontSize(isSmallDevice ? 11 : 13),
     fontWeight: '600',
     textAlign: 'center',
+    paddingHorizontal: spacing.xs,
   },
   activeText: {
     color: '#fff',
@@ -78,17 +47,21 @@ const styles = StyleSheet.create({
   },
   languageBtn: {
     backgroundColor: '#3498db',
-    marginTop: 20,
+    marginTop: hp('2%'),
     alignSelf: 'center',
-    paddingHorizontal: 20,
-    paddingVertical: 10,
-    borderRadius: 20,
+    paddingHorizontal: wp('5%'),
+    paddingVertical: hp('1%'),
+    borderRadius: borderRadius.lg,
     elevation: 3,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: hp('0.3%') },
+    shadowOpacity: 0.2,
+    shadowRadius: wp('1%'),
   },
   languageText: {
     color: '#fff',
     fontWeight: '600',
-    fontSize: 14,
+    fontSize: fontSize(14),
   },
 });
 

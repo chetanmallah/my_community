@@ -1,4 +1,8 @@
 import { Dimensions, Platform, PixelRatio } from 'react-native';
+import { 
+  widthPercentageToDP as wp, 
+  heightPercentageToDP as hp 
+} from 'react-native-responsive-screen';
 
 const { width: screenWidth, height: screenHeight } = Dimensions.get('window');
 
@@ -9,18 +13,24 @@ export const isMediumDevice = screenWidth > 480 && screenWidth < 768;
 export const isLargeDevice = screenWidth >= 768;
 export const isTablet = screenWidth >= 768;
 
-// Responsive font scaling
+// Responsive font scaling with better algorithm
 export const fontSize = (size) => {
   const scale = screenWidth / 375; // Base on iPhone 6/7/8 width
-  const newSize = size * scale;
+  let newSize = size * scale;
+  
+  // Apply device-specific adjustments
+  if (isPixel2) {
+    newSize = newSize * 0.85;
+  } else if (isSmallDevice) {
+    newSize = newSize * 0.9;
+  } else if (isLargeDevice) {
+    newSize = newSize * 1.1;
+  }
   
   if (Platform.OS === 'ios') {
     return Math.round(PixelRatio.roundToNearestPixel(newSize));
   }
   
-  if (isPixel2) return Math.round(newSize * 0.85);
-  if (isSmallDevice) return Math.round(newSize * 0.9);
-  if (isLargeDevice) return Math.round(newSize * 1.1);
   return Math.round(newSize);
 };
 
@@ -44,19 +54,53 @@ export const getResponsiveDimensions = () => ({
   isTablet,
 });
 
-// Responsive spacing
+// Responsive spacing system
 export const spacing = {
   xs: wp('1%'),
   sm: wp('2%'),
   md: wp('4%'),
   lg: wp('6%'),
   xl: wp('8%'),
+  xxl: wp('10%'),
 };
 
-// Responsive border radius
+// Responsive border radius system
 export const borderRadius = {
+  xs: wp('1%'),
   sm: wp('2%'),
   md: wp('3%'),
   lg: wp('4%'),
   xl: wp('6%'),
+  xxl: wp('8%'),
+};
+
+// Responsive icon sizes
+export const iconSizes = {
+  xs: wp('4%'),
+  sm: wp('5%'),
+  md: wp('6%'),
+  lg: wp('7%'),
+  xl: wp('8%'),
+};
+
+// Responsive button heights
+export const buttonHeights = {
+  sm: hp('5%'),
+  md: hp('6%'),
+  lg: hp('7%'),
+  xl: hp('8%'),
+};
+
+// Helper function for responsive margins
+export const getResponsiveMargin = (base) => {
+  if (isSmallDevice) return base * 0.8;
+  if (isLargeDevice) return base * 1.2;
+  return base;
+};
+
+// Helper function for responsive padding
+export const getResponsivePadding = (base) => {
+  if (isSmallDevice) return base * 0.9;
+  if (isLargeDevice) return base * 1.1;
+  return base;
 };

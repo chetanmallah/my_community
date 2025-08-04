@@ -197,7 +197,7 @@ const PostCard = ({ activeCategory }) => {
 
   if (loading) {
     return (
-      <View style={styles.container}>
+      <View style={styles.loadingContainer}>
         <ActivityIndicator size="large" color="#212529" />
       </View>
     );
@@ -205,7 +205,7 @@ const PostCard = ({ activeCategory }) => {
 
   if (posts.length === 0) {
     return (
-      <View style={styles.container}>
+      <View style={styles.emptyContainer}>
         <Text style={styles.noPostsText}>No posts available for {activeCategory}</Text>
       </View>
     );

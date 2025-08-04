@@ -1,7 +1,9 @@
-// components/RectangleCard/RectangleCardStyles.js
 import { StyleSheet } from 'react-native';
-import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
-import { isSmallDevice, fontSize } from '../../utils/responsiveHelper';
+import { 
+  widthPercentageToDP as wp, 
+  heightPercentageToDP as hp 
+} from 'react-native-responsive-screen';
+import { fontSize, isSmallDevice, spacing, borderRadius } from '../../utils/responsiveHelper';
 
 const styles = StyleSheet.create({
   loaderContainer: {
@@ -9,17 +11,22 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   flatListContainer: {
-    paddingHorizontal: wp(isSmallDevice ? '2%' : '3%'),
-    paddingVertical: hp(isSmallDevice ? '1%' : '1%'),
+    paddingHorizontal: spacing.sm,
+    paddingVertical: hp('1%'),
   },
   rectangleCard: {
-    paddingVertical: hp(isSmallDevice ? '1.5%' : '1.3%'),
+    paddingVertical: hp(isSmallDevice ? '1.2%' : '1.5%'),
     paddingHorizontal: wp(isSmallDevice ? '3%' : '4%'),
-    borderRadius: wp(isSmallDevice ? '2.5%' : '3%'),
-    marginHorizontal: wp('1.2%'),
+    borderRadius: borderRadius.md,
+    marginHorizontal: wp('1%'),
     minWidth: wp(isSmallDevice ? '18%' : '20%'),
     alignItems: 'center',
     justifyContent: 'center',
+    elevation: 2,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: hp('0.2%') },
+    shadowOpacity: 0.1,
+    shadowRadius: wp('1%'),
   },
   activeCard: {
     backgroundColor: '#000000',
@@ -27,14 +34,15 @@ const styles = StyleSheet.create({
     borderColor: '#FFFFFF',
   },
   inactiveCard: {
-    backgroundColor: '#000000',
+    backgroundColor: 'rgba(0, 0, 0, 0.8)',
     borderWidth: 0,
   },
   cardText: {
-    fontSize: fontSize(wp('3.2%'), wp('3.2%'), wp('3.6%')), // Small / Medium / Large
+    fontSize: fontSize(isSmallDevice ? 11 : 13),
     color: '#FFFFFF',
     fontWeight: 'bold',
     textTransform: 'uppercase',
+    textAlign: 'center',
   },
 });
 
